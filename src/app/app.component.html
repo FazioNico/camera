@@ -1,3 +1,7 @@
 <ion-content class="ion-padding">
-  hi
+
+  <ion-button (click)="takePicture()">take picture</ion-button>
+
+  <ion-img *ngIf="imgUrl" [src]="imgUrl"></ion-img>
+  
 </ion-content>

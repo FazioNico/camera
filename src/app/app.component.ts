@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
+import { CameraService } from './camera.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,15 @@ import { Plugins } from '@capacitor/core';
 })
 export class AppComponent {
   title = 'Camera';
+  imgUrl: string = null;
+
+  constructor(
+    private _camera: CameraService
+  ) {}
+
+  async takePicture(): Promise<void> {
+    const imgUrl = await this._camera.takePicture();
+    console.log('--->', imgUrl);
+    this.imgUrl = imgUrl;
+  }
 }
